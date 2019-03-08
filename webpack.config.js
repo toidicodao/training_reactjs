@@ -1,18 +1,21 @@
 // Get url root
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const devServer = {
     port: 4000,
-    open: true
-}
+    open: true,
+    watchContentBase: true
+};
 
 const config = {
     entry: './src/index.js',
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
-      },
+        path: path.join(__dirname, 'dist'),
+        filename: '[name].js',
+        publicPath: "/dist"
+    },
     module: {
         rules: [
             {
