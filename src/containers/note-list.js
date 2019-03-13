@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {SelectNote} from '../actions/index'
 
 const pStyle = {
     fontSize: '15px',
     width: '300px'
   };
 class NoteList extends Component {
-
     ShowNote(){
         return this.props.notes.map((value, index) => 
             <tr key={index}>
                 <td style={{width: '50px'}}>{index + 1}</td>
-                <td style={pStyle}>{value.name}</td>
+                <td onClick={
+                    () => {
+                        this.props.SelectNote(value)
+                    }
+                } 
+                    style={pStyle}>{value.name}
+                </td>
                 <td style={pStyle}>{value.age}</td>
                 <td style={pStyle}>{value.status ? 'active': 'unActive'}</td>
                 <td style={pStyle}>
@@ -25,6 +32,7 @@ class NoteList extends Component {
            <tbody>
                {this.ShowNote()}
            </tbody>
+
         );
     }
 }
@@ -35,5 +43,8 @@ function mapStateToProps(state){
     }
 }
 
-let NoteContainer = connect(mapStateToProps)(NoteList)
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({SelectNote: SelectNote}, dispatch)
+}
+let NoteContainer = connect(mapStateToProps, mapDispatchToProps)(NoteList)
 export default NoteContainer;

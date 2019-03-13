@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import RowNote from '../../containers/note-list'
-
+import NoteDetail from '../../containers/note-detail'
 
 class ListNote extends Component {
     render() {
@@ -18,6 +18,8 @@ class ListNote extends Component {
                     </thead>
                     <RowNote />
                 </table>
+                -----------------
+                <NoteDetail />
             </div>
         );
     }
