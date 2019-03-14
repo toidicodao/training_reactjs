@@ -4,7 +4,7 @@ import ActiveNote from './active-note-reducer'
 const allReducers = combineReducers(
     {
         notes: NoteReducer,
-        activeNote: ActiveNote
+        activeNote: ActiveNote,
     }
 )
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {SelectNote} from '../actions/index'
+import {SelectNote, DeleteNote} from '../actions/index'
 
 const pStyle = {
     fontSize: '15px',
@@ -22,7 +22,11 @@ class NoteList extends Component {
                 <td style={pStyle}>{value.age}</td>
                 <td style={pStyle}>{value.status ? 'active': 'unActive'}</td>
                 <td style={pStyle}>
-                    <a>edit</a>
+                    <a onClick={
+                        () => {
+                            this.props.DeleteNote(value)
+                        }
+                    }>Delete</a>
                 </td>
             </tr>
         );
@@ -32,7 +36,6 @@ class NoteList extends Component {
            <tbody>
                {this.ShowNote()}
            </tbody>
-
         );
     }
 }
@@ -44,7 +47,10 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({SelectNote: SelectNote}, dispatch)
+    return bindActionCreators({
+        SelectNote: SelectNote,
+        DeleteNote: DeleteNote
+    }, dispatch)
 }
 let NoteContainer = connect(mapStateToProps, mapDispatchToProps)(NoteList)
 export default NoteContainer;

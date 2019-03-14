@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import RowNote from '../../containers/note-list'
 import NoteDetail from '../../containers/note-detail'
+import NoteAdd from '../../containers/note-add'
 
 class ListNote extends Component {
     render() {
         return (
             <div>
+                <NoteAdd />
                 <table>
                     <thead>
                         <tr>

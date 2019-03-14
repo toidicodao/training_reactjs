@@ -8,21 +8,9 @@ class ContentCus extends Component {
 
     constructor(props, context) {
         super(props, context);
-        
-        this.state = {
-            count: 0
-        }
-    }
-    
 
-    onClick = () => {
-        this.setState({
-            count: this.state.count + 1
-        })
     }
-    
     render() {
-        const size = this.state.size;
         return (
             <div>
                 <Content style={{ padding: '0 50px' }}>
@@ -32,8 +20,7 @@ class ContentCus extends Component {
                         <Breadcrumb.Item>App</Breadcrumb.Item>
                     </Breadcrumb>
                     <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-                        <Button type="primary" size={size} onClick={this.onClick}>Primary</Button>
-                        <label> {this.state.count} </label>
+
                         <ListNote />
                     </div>
                 </Content>
